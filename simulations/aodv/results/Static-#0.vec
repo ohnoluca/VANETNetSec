@@ -1,0 +1,848 @@
+version 2
+run Static-0-20210429-12:49:00-12125
+attr configname Static
+attr datetime 20210429-12:49:00
+attr experiment Static
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network AODVNetwork
+attr processid 12125
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param *.host[*].wlan[*].radio.transmitter.communicationRange 250m
+param *.host[0].app[0].destAddr "\"host[1](ipv4)\""
+param **.wlan[*].typename "\"AckingWirelessInterface\""
+param **.wlan[*].bitrate 2Mbps
+param **.wlan[*].mac.headerLength 23B
+param **.wlan[*].radio.typename "\"UnitDiskRadio\""
+param **.wlan[*].radio.transmitter.headerLength 96b
+param **.wlan[*].radio.transmitter.communicationRange 250m
+param **.wlan[*].radio.transmitter.interferenceRange 0m
+param **.wlan[*].radio.transmitter.detectionRange 0m
+param **.wlan[*].radio.receiver.ignoreInterference true
+param *.numHosts 20
+param **.host[*].mobility.typename "\"StationaryMobility\""
+param **.mobility.constraintAreaMinZ 0m
+param **.mobility.constraintAreaMaxZ 0m
+param **.mobility.constraintAreaMinX 0m
+param **.mobility.constraintAreaMinY 0m
+param **.mobility.constraintAreaMaxX 600m
+param **.mobility.constraintAreaMaxY 600m
+param *.host[0].numApps 1
+param *.host[0].app[0].typename "\"PingApp\""
+param *.host[0].app[0].startTime uniform(1s,5s)
+param *.host[0].app[0].printPing true
+param **.wlan[*].bitrate 2Mbps
+param **.hasStatus true
+
+vector 0 AODVNetwork.host[0].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 1 AODVNetwork.host[1].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 2 AODVNetwork.host[2].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 3 AODVNetwork.host[3].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 4 AODVNetwork.host[4].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 5 AODVNetwork.host[5].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 6 AODVNetwork.host[6].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 7 AODVNetwork.host[7].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 8 AODVNetwork.host[8].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 9 AODVNetwork.host[9].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 10 AODVNetwork.host[10].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 11 AODVNetwork.host[11].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 12 AODVNetwork.host[12].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 13 AODVNetwork.host[13].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 14 AODVNetwork.host[14].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 15 AODVNetwork.host[15].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 16 AODVNetwork.host[16].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 17 AODVNetwork.host[17].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 18 AODVNetwork.host[18].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 19 AODVNetwork.host[19].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 20 AODVNetwork.host[0].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 21 AODVNetwork.host[0].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 22 AODVNetwork.host[1].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 23 AODVNetwork.host[1].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 24 AODVNetwork.host[2].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 25 AODVNetwork.host[2].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 26 AODVNetwork.host[3].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 27 AODVNetwork.host[3].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 28 AODVNetwork.host[4].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 29 AODVNetwork.host[4].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 30 AODVNetwork.host[5].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 31 AODVNetwork.host[5].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 32 AODVNetwork.host[6].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 33 AODVNetwork.host[6].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 34 AODVNetwork.host[7].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 35 AODVNetwork.host[7].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 36 AODVNetwork.host[8].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 37 AODVNetwork.host[8].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 38 AODVNetwork.host[9].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 39 AODVNetwork.host[9].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 40 AODVNetwork.host[10].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 41 AODVNetwork.host[10].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 42 AODVNetwork.host[11].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 43 AODVNetwork.host[11].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 44 AODVNetwork.host[12].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 45 AODVNetwork.host[12].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 46 AODVNetwork.host[13].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 47 AODVNetwork.host[13].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 48 AODVNetwork.host[14].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 49 AODVNetwork.host[14].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 50 AODVNetwork.host[15].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 51 AODVNetwork.host[15].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 52 AODVNetwork.host[16].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 53 AODVNetwork.host[16].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 54 AODVNetwork.host[17].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 55 AODVNetwork.host[17].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 56 AODVNetwork.host[18].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 57 AODVNetwork.host[18].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 58 AODVNetwork.host[19].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 59 AODVNetwork.host[19].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 60 AODVNetwork.host[0].app[0] pingTxSeq:vector ETV
+attr interpolationmode none
+attr title "ping tx seq, vector"
+vector 61 AODVNetwork.host[0].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 62 AODVNetwork.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 63 AODVNetwork.host[0].wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 64 AODVNetwork.host[0].wlan[0].mac.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 65 AODVNetwork.host[0].wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 66 AODVNetwork.host[0].wlan[0].mac.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 67 AODVNetwork.host[0].wlan[0].mac sentDownPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 68 AODVNetwork.host[19].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 69 AODVNetwork.host[19].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 70 AODVNetwork.host[19].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 71 AODVNetwork.host[19].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 72 AODVNetwork.host[8].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 73 AODVNetwork.host[8].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 74 AODVNetwork.host[8].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 75 AODVNetwork.host[8].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 76 AODVNetwork.host[11].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 77 AODVNetwork.host[11].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 78 AODVNetwork.host[11].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 79 AODVNetwork.host[11].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 80 AODVNetwork.host[3].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 81 AODVNetwork.host[3].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 82 AODVNetwork.host[3].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 83 AODVNetwork.host[3].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 84 AODVNetwork.host[18].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 85 AODVNetwork.host[18].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 86 AODVNetwork.host[18].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 87 AODVNetwork.host[18].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 88 AODVNetwork.host[10].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 89 AODVNetwork.host[10].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 90 AODVNetwork.host[10].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 91 AODVNetwork.host[10].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 92 AODVNetwork.host[16].wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromLower
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 93 AODVNetwork.host[16].wlan[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 94 AODVNetwork.host[16].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 95 AODVNetwork.host[16].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+0	0	0	0
+0	0	0	0
+0	0	0	4
+1	0	0	0
+1	0	0	0
+1	0	0	4
+2	0	0	0
+2	0	0	0
+2	0	0	4
+3	0	0	0
+3	0	0	0
+3	0	0	4
+4	0	0	0
+4	0	0	0
+4	0	0	4
+5	0	0	0
+5	0	0	0
+5	0	0	4
+6	0	0	0
+6	0	0	0
+6	0	0	4
+7	0	0	0
+7	0	0	0
+7	0	0	4
+8	0	0	0
+8	0	0	0
+8	0	0	4
+9	0	0	0
+9	0	0	0
+9	0	0	4
+10	0	0	0
+10	0	0	0
+10	0	0	4
+11	0	0	0
+11	0	0	0
+11	0	0	4
+12	0	0	0
+12	0	0	0
+12	0	0	4
+13	0	0	0
+13	0	0	0
+13	0	0	4
+14	0	0	0
+14	0	0	0
+14	0	0	4
+15	0	0	0
+15	0	0	0
+15	0	0	4
+16	0	0	0
+16	0	0	0
+16	0	0	4
+17	0	0	0
+17	0	0	0
+17	0	0	4
+18	0	0	0
+18	0	0	0
+18	0	0	4
+19	0	0	0
+19	0	0	0
+19	0	0	4
+20	0	0	1
+21	0	0	1
+21	108	3.198218232299	2
+21	128	3.198566232299	1
+21	182	3.518829956042	2
+21	202	3.519177956042	1
+21	256	3.999475337937	2
+21	276	3.999823337937	1
+21	352	4.638267826069	2
+21	372	4.638615826069	1
+21	492	7.599543737316	2
+21	512	7.599891737316	1
+21	632	10.557978425104	2
+21	652	10.558326425104	1
+22	0	0	1
+23	0	0	1
+24	0	0	1
+25	0	0	1
+26	0	0	1
+26	112	3.198218906926	3
+26	144	3.198566906926	1
+26	186	3.518830630669	3
+26	218	3.519178630669	1
+26	260	3.999476012564	3
+26	292	3.999824012564	1
+26	356	4.638268500696	3
+26	388	4.638616500696	1
+26	496	7.599544411943	3
+26	528	7.599892411943	1
+26	636	10.557979099731	3
+26	668	10.558327099731	1
+27	0	0	1
+28	0	0	1
+29	0	0	1
+30	0	0	1
+31	0	0	1
+32	0	0	1
+33	0	0	1
+34	0	0	1
+35	0	0	1
+36	0	0	1
+36	110	3.198218700589	3
+36	134	3.198566700589	1
+36	184	3.518830424332	3
+36	208	3.519178424332	1
+36	258	3.999475806227	3
+36	282	3.999823806227	1
+36	354	4.638268294359	3
+36	378	4.638616294359	1
+36	494	7.599544205606	3
+36	518	7.599892205606	1
+36	634	10.557978893394	3
+36	658	10.558326893394	1
+37	0	0	1
+38	0	0	1
+39	0	0	1
+40	0	0	1
+40	114	3.198218974475	3
+40	154	3.198566974475	1
+40	188	3.518830698218	3
+40	228	3.519178698218	1
+40	262	3.999476080113	3
+40	302	3.999824080113	1
+40	358	4.638268568245	3
+40	398	4.638616568245	1
+40	498	7.599544479492	3
+40	538	7.599892479492	1
+40	638	10.55797916728	3
+40	678	10.55832716728	1
+41	0	0	1
+42	0	0	1
+42	111	3.198218831632	3
+42	139	3.198566831632	1
+42	185	3.518830555375	3
+42	213	3.519178555375	1
+42	259	3.99947593727	3
+42	287	3.99982393727	1
+42	355	4.638268425402	3
+42	383	4.638616425402	1
+42	495	7.599544336649	3
+42	523	7.599892336649	1
+42	635	10.557979024437	3
+42	663	10.558327024437	1
+43	0	0	1
+44	0	0	1
+45	0	0	1
+46	0	0	1
+47	0	0	1
+48	0	0	1
+49	0	0	1
+50	0	0	1
+51	0	0	1
+52	0	0	1
+52	115	3.198219019488	3
+52	159	3.198567019488	1
+52	189	3.518830743231	3
+52	233	3.519178743231	1
+52	263	3.999476125126	3
+52	307	3.999824125126	1
+52	359	4.638268613258	3
+52	403	4.638616613258	1
+52	499	7.599544524505	3
+52	543	7.599892524505	1
+52	639	10.557979212293	3
+52	683	10.558327212293	1
+53	0	0	1
+54	0	0	1
+55	0	0	1
+56	0	0	1
+56	113	3.198218966159	3
+56	149	3.198566966159	1
+56	187	3.518830689902	3
+56	223	3.519178689902	1
+56	261	3.999476071797	3
+56	297	3.999824071797	1
+56	357	4.638268559929	3
+56	393	4.638616559929	1
+56	497	7.599544471176	3
+56	533	7.599892471176	1
+56	637	10.557979158964	3
+56	673	10.558327158964	1
+57	0	0	1
+58	0	0	1
+58	109	3.19821862158	3
+58	129	3.19856662158	1
+58	183	3.518830345323	3
+58	203	3.519178345323	1
+58	257	3.999475727218	3
+58	277	3.999823727218	1
+58	353	4.63826821535	3
+58	373	4.63861621535	1
+58	493	7.599544126597	3
+58	513	7.599892126597	1
+58	633	10.557978814385	3
+58	653	10.558326814385	1
+59	0	0	1
+60	101	3.195254009217	0
+60	345	4.195254009217	1
+60	441	5.195254009217	2
+60	463	6.195254009217	3
+60	485	7.195254009217	4
+60	581	8.195254009217	5
+60	603	9.195254009217	6
+60	625	10.195254009217	7
+60	721	11.195254009217	8
+60	743	12.195254009217	9
+60	765	13.195254009217	10
+61	105	3.198218232299	32
+61	179	3.518829956042	32
+61	253	3.999475337937	32
+61	349	4.638267826069	32
+61	489	7.599543737316	32
+61	629	10.557978425104	32
+62	107	3.198218232299	52
+62	181	3.518829956042	52
+62	255	3.999475337937	52
+62	351	4.638267826069	52
+62	491	7.599543737316	52
+62	631	10.557978425104	52
+63	107	3.198218232299	52
+63	181	3.518829956042	52
+63	255	3.999475337937	52
+63	351	4.638267826069	52
+63	491	7.599543737316	52
+63	631	10.557978425104	52
+64	107	3.198218232299	1
+64	107	3.198218232299	0
+64	181	3.518829956042	1
+64	181	3.518829956042	0
+64	255	3.999475337937	1
+64	255	3.999475337937	0
+64	351	4.638267826069	1
+64	351	4.638267826069	0
+64	491	7.599543737316	1
+64	491	7.599543737316	0
+64	631	10.557978425104	1
+64	631	10.557978425104	0
+65	107	3.198218232299	52
+65	181	3.518829956042	52
+65	255	3.999475337937	52
+65	351	4.638267826069	52
+65	491	7.599543737316	52
+65	631	10.557978425104	52
+66	107	3.198218232299	0
+66	181	3.518829956042	0
+66	255	3.999475337937	0
+66	351	4.638267826069	0
+66	491	7.599543737316	0
+66	631	10.557978425104	0
+67	107	3.198218232299	75
+67	181	3.518829956042	75
+67	255	3.999475337937	75
+67	351	4.638267826069	75
+67	491	7.599543737316	75
+67	631	10.557978425104	75
+68	130	3.19856662158	75
+68	204	3.519178345323	75
+68	278	3.999823727218	75
+68	374	4.63861621535	75
+68	514	7.599892126597	75
+68	654	10.558326814385	75
+69	130	3.19856662158	52
+69	204	3.519178345323	52
+69	278	3.999823727218	52
+69	374	4.63861621535	52
+69	514	7.599892126597	52
+69	654	10.558326814385	52
+70	132	3.19856662158	32
+70	206	3.519178345323	32
+70	280	3.999823727218	32
+70	376	4.63861621535	32
+70	516	7.599892126597	32
+70	656	10.558326814385	32
+71	132	3.19856662158	1
+71	206	3.519178345323	2
+71	280	3.999823727218	3
+71	376	4.63861621535	4
+71	516	7.599892126597	5
+71	656	10.558326814385	6
+72	135	3.198566700589	75
+72	209	3.519178424332	75
+72	283	3.999823806227	75
+72	379	4.638616294359	75
+72	519	7.599892205606	75
+72	659	10.558326893394	75
+73	135	3.198566700589	52
+73	209	3.519178424332	52
+73	283	3.999823806227	52
+73	379	4.638616294359	52
+73	519	7.599892205606	52
+73	659	10.558326893394	52
+74	137	3.198566700589	32
+74	211	3.519178424332	32
+74	285	3.999823806227	32
+74	381	4.638616294359	32
+74	521	7.599892205606	32
+74	661	10.558326893394	32
+75	137	3.198566700589	1
+75	211	3.519178424332	2
+75	285	3.999823806227	3
+75	381	4.638616294359	4
+75	521	7.599892205606	5
+75	661	10.558326893394	6
+76	140	3.198566831632	75
+76	214	3.519178555375	75
+76	288	3.99982393727	75
+76	384	4.638616425402	75
+76	524	7.599892336649	75
+76	664	10.558327024437	75
+77	140	3.198566831632	52
+77	214	3.519178555375	52
+77	288	3.99982393727	52
+77	384	4.638616425402	52
+77	524	7.599892336649	52
+77	664	10.558327024437	52
+78	142	3.198566831632	32
+78	216	3.519178555375	32
+78	290	3.99982393727	32
+78	386	4.638616425402	32
+78	526	7.599892336649	32
+78	666	10.558327024437	32
+79	142	3.198566831632	1
+79	216	3.519178555375	2
+79	290	3.99982393727	3
+79	386	4.638616425402	4
+79	526	7.599892336649	5
+79	666	10.558327024437	6
+80	145	3.198566906926	75
+80	219	3.519178630669	75
+80	293	3.999824012564	75
+80	389	4.638616500696	75
+80	529	7.599892411943	75
+80	669	10.558327099731	75
+81	145	3.198566906926	52
+81	219	3.519178630669	52
+81	293	3.999824012564	52
+81	389	4.638616500696	52
+81	529	7.599892411943	52
+81	669	10.558327099731	52
+82	147	3.198566906926	32
+82	221	3.519178630669	32
+82	295	3.999824012564	32
+82	391	4.638616500696	32
+82	531	7.599892411943	32
+82	671	10.558327099731	32
+83	147	3.198566906926	1
+83	221	3.519178630669	2
+83	295	3.999824012564	3
+83	391	4.638616500696	4
+83	531	7.599892411943	5
+83	671	10.558327099731	6
+84	150	3.198566966159	75
+84	224	3.519178689902	75
+84	298	3.999824071797	75
+84	394	4.638616559929	75
+84	534	7.599892471176	75
+84	674	10.558327158964	75
+85	150	3.198566966159	52
+85	224	3.519178689902	52
+85	298	3.999824071797	52
+85	394	4.638616559929	52
+85	534	7.599892471176	52
+85	674	10.558327158964	52
+86	152	3.198566966159	32
+86	226	3.519178689902	32
+86	300	3.999824071797	32
+86	396	4.638616559929	32
+86	536	7.599892471176	32
+86	676	10.558327158964	32
+87	152	3.198566966159	1
+87	226	3.519178689902	2
+87	300	3.999824071797	3
+87	396	4.638616559929	4
+87	536	7.599892471176	5
+87	676	10.558327158964	6
+88	155	3.198566974475	75
+88	229	3.519178698218	75
+88	303	3.999824080113	75
+88	399	4.638616568245	75
+88	539	7.599892479492	75
+88	679	10.55832716728	75
+89	155	3.198566974475	52
+89	229	3.519178698218	52
+89	303	3.999824080113	52
+89	399	4.638616568245	52
+89	539	7.599892479492	52
+89	679	10.55832716728	52
+90	157	3.198566974475	32
+90	231	3.519178698218	32
+90	305	3.999824080113	32
+90	401	4.638616568245	32
+90	541	7.599892479492	32
+90	681	10.55832716728	32
+91	157	3.198566974475	1
+91	231	3.519178698218	2
+91	305	3.999824080113	3
+91	401	4.638616568245	4
+91	541	7.599892479492	5
+91	681	10.55832716728	6
+92	160	3.198567019488	75
+92	234	3.519178743231	75
+92	308	3.999824125126	75
+92	404	4.638616613258	75
+92	544	7.599892524505	75
+92	684	10.558327212293	75
+93	160	3.198567019488	52
+93	234	3.519178743231	52
+93	308	3.999824125126	52
+93	404	4.638616613258	52
+93	544	7.599892524505	52
+93	684	10.558327212293	52
+94	162	3.198567019488	32
+94	236	3.519178743231	32
+94	310	3.999824125126	32
+94	406	4.638616613258	32
+94	546	7.599892524505	32
+94	686	10.558327212293	32
+95	162	3.198567019488	1
+95	236	3.519178743231	2
+95	310	3.999824125126	3
+95	406	4.638616613258	4
+95	546	7.599892524505	5
+95	686	10.558327212293	6
+

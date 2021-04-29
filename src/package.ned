@@ -1,0 +1,3 @@
+package vanetnetsec;
+
+@license(LGPL);
