@@ -23,13 +23,30 @@
 package vanetnetsec.simulations.routingcustomaodv;
 
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
+import inet.visualizer.integrated.IntegratedVisualizer;
+import org.car2x.veins.visualizer.roads.RoadsCanvasVisualizer;
+import inet.environment.common.PhysicalEnvironment;
 import vanetnetsec.veins_inet.VeinsInetRoutingCar;
 import vanetnetsec.veins_inet.VeinsInetManager;
 
 network RoutingScenario
 {
+    @display("bgb=319,384");
     submodules:
-        radioMedium: Ieee80211ScalarRadioMedium;
-        manager: VeinsInetManager;
+        radioMedium: Ieee80211ScalarRadioMedium {
+            @display("p=64,224");
+        }
+        manager: VeinsInetManager {
+            @display("p=192,320");
+        }
+        visualizer: IntegratedVisualizer {
+            @display("p=64,320");
+        }
+        physicalEnvironment: PhysicalEnvironment {
+            @display("p=192,224");
+        }
+        roadsCanvasVisualizer: RoadsCanvasVisualizer {
+            @display("p=64,416");
+        }
         node[0]: VeinsInetRoutingCar;
 }
