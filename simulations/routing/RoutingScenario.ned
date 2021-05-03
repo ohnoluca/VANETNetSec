@@ -22,6 +22,7 @@
 
 package vanetnetsec.simulations.routing;
 
+import inet.node.aodv.AodvRouter;
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import vanetnetsec.veins_inet.VeinsInetRoutingCar;
 import vanetnetsec.veins_inet.VeinsInetManager;
@@ -31,5 +32,14 @@ network RoutingScenario
     submodules:
         radioMedium: Ieee80211ScalarRadioMedium;
         manager: VeinsInetManager;
-        node[0]: VeinsInetRoutingCar;
+        node1: AodvRouter {
+            @display("p=356,258");
+        }
+        node2: AodvRouter {
+            @display("p=504,340");
+        }
+        node3: AodvRouter {
+            @display("p=446,63");
+        }
+
 }

@@ -22,6 +22,7 @@
 
 package vanetnetsec.simulations.routingcustomaodv;
 
+import inet.node.aodv.AodvRouter;
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import inet.visualizer.integrated.IntegratedVisualizer;
 import org.car2x.veins.visualizer.roads.RoadsCanvasVisualizer;
@@ -31,6 +32,8 @@ import vanetnetsec.veins_inet.VeinsInetManager;
 
 network RoutingScenario
 {
+    parameters:
+        int numV; //numero veicoli
     @display("bgb=319,384");
     submodules:
         radioMedium: Ieee80211ScalarRadioMedium {
@@ -48,5 +51,6 @@ network RoutingScenario
         roadsCanvasVisualizer: RoadsCanvasVisualizer {
             @display("p=64,416");
         }
-        node[0]: VeinsInetRoutingCar;
+		
+		node[0]: VeinsInetRoutingCar;
 }
