@@ -22,6 +22,7 @@
 
 package vanetnetsec.simulations.routingcustomaodv;
 
+import vanetnetsec.node.aodv.AodvRouterAttacker;
 import vanetnetsec.node.aodv.AodvRouterBase;
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import inet.visualizer.integrated.IntegratedVisualizer;
@@ -52,7 +53,10 @@ network RoutingScenario
             @display("p=64,416");
         }
 		
-		node[0]: AodvRouterBase{
-		}
-		//node[0]: VeinsInetRoutingCar;
+//		node[0]: AodvRouterBase{
+//		}
+//		
+//		node1: AodvRouterAttacker{
+//		}
+		node[0]: VeinsInetRoutingCar;
 }

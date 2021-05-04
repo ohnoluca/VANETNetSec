@@ -22,6 +22,8 @@
 
 package vanetnetsec.veins_inet;
 
+import vanetnetsec.routing.aodv.AodvBase;
+import vanetnetsec.routing.aodv.AodvAttacker;
 import inet.networklayer.configurator.ipv4.HostAutoConfigurator;
 import inet.node.inet.AdhocHost;
 import inet.applications.contract.IApp;
