@@ -344,7 +344,7 @@ void AodvAttacker::sendRREQ(const Ptr<Rreq>& rreq, const L3Address& destAddr, un
     }
 
     // Each time, the timeout for receiving a RREP is RING_TRAVERSAL_TIME.
-    simtime_t ringTraversalTime = 2.0 * nodeTraversalTime * (timeToLive + timeoutBuffer);
+    simtime_t ringTraversalTime = 2.0 * nodeTraversalTime * (timeToLive + timeoutBuffer); //FLOODING ATTACK
     scheduleAt(simTime() + ringTraversalTime, rrepTimerMsg);
 
     EV_INFO << "Sending a Route Request with target " << rreq->getDestAddr() << " and TTL= " << timeToLive << endl;
