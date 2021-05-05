@@ -1,4 +1,4 @@
-file 23894 1620032176                                           
+file 23894 1620208600                                           
 version 2
 run SimpleRREQ-0-20210503-08:53:06-15656
 attr configname SimpleRREQ
@@ -49,250 +49,249 @@ vector 0 SimpleRREQ.sender.wlan[0].radio radioMode:vector ETV
 attr interpolationmode sample-hold
 attr source radioModeChanged
 attr title "Radio mode, vector"
+0	11162 24 0 0 0 0 3 0 4 4 16
 vector 1 SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector ETV
 attr interpolationmode sample-hold
 attr source radioModeChanged
 attr title "Radio mode, vector"
+1	11186 24 0 0 0 0 3 0 4 4 16
 vector 2 SimpleRREQ.receiver.wlan[0].radio radioMode:vector ETV
 attr interpolationmode sample-hold
 attr source radioModeChanged
 attr title "Radio mode, vector"
+2	11210 24 0 0 0 0 3 0 4 4 16
 vector 3 SimpleRREQ.sender.wlan[0].radio receptionState:vector ETV
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, vector"
+3	11234 484 0 461 0 16.197160184053 21 1 3 41 101
 vector 4 SimpleRREQ.sender.wlan[0].radio transmissionState:vector ETV
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, vector"
+4	11718 710 0 481 0 17.195730009217 31 1 2 46 76
 vector 5 SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector ETV
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, vector"
+5	12428 946 0 482 0 17.195730552926 41 1 3 81 201
 vector 6 SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector ETV
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, vector"
+6	13374 510 0 486 0 17.195730552926 22 1 2 33 55
 vector 7 SimpleRREQ.receiver.wlan[0].radio receptionState:vector ETV
 attr interpolationmode sample-hold
 attr source receptionStateChanged
 attr title "Radio reception state, vector"
+7	13884 484 0 462 0 16.197160184053 21 1 3 41 101
 vector 8 SimpleRREQ.receiver.wlan[0].radio transmissionState:vector ETV
 attr interpolationmode sample-hold
 attr source transmissionStateChanged
 attr title "Radio transmission state, vector"
+8	14368 248 0 451 0 16.196683096635 11 1 2 16 26
 vector 9 SimpleRREQ.sender.app[0] pingTxSeq:vector ETV
 attr interpolationmode none
 attr title "ping tx seq, vector"
+9	14616 354 16 475 3.195254009217 17.195254009217 15 0 14 105 1015
 vector 10 SimpleRREQ.sender.udp packetSent:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, vector(packetBytes)"
+10	14970 251 20 224 3.198218232299 15.638483479792 10 32 32 320 10240
 vector 11 SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, vector(packetBytes)"
+11	15221 381 22 477 3.198218232299 17.195254009217 15 28 84 884 56048
 vector 12 SimpleRREQ.sender.wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet pushed, vector(packetBytes)"
+12	15602 381 22 477 3.198218232299 17.195254009217 15 28 84 884 56048
 vector 13 SimpleRREQ.sender.wlan[0].mac.queue queueLength:vector ETV
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, vector"
+13	15983 732 22 477 3.198218232299 17.195254009217 30 0 1 15 15
 vector 14 SimpleRREQ.sender.wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet popped, vector(packetBytes)"
+14	16715 381 22 477 3.198218232299 17.195254009217 15 28 84 884 56048
 vector 15 SimpleRREQ.sender.wlan[0].mac.queue queueingTime:vector ETV
 attr interpolationmode none
 attr source queueingTime(packetPopped)
 attr title "queueing times, vector"
 attr unit s
+15	17096 379 22 477 3.198218232299 17.195254009217 15 0 0.000476543709 0.000476543709 2.2709390658748e-07
 vector 16 SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, vector(packetBytes)"
+16	17475 385 22 477 3.198218232299 17.195254009217 15 51 107 1229 104647
 vector 17 SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, vector(packetBytes)"
+17	17860 516 28 483 3.198566776008 17.195730552926 20 51 107 1672 146636
 vector 18 SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, vector(packetBytes)"
+18	18376 509 28 483 3.198566776008 17.195730552926 20 28 84 1212 80304
 vector 19 SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, vector(packetBytes)"
+19	18885 276 30 284 3.198566776008 15.641940106878 11 28 32 348 11024
 vector 20 SimpleRREQ.intermediateNode.udp passedUpPk:vector(count) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, vector(count)"
+20	19161 267 30 284 3.198566776008 15.641940106878 11 1 11 66 506
 vector 21 SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, vector(packetBytes)"
+21	19428 52 238 288 15.640753932042 15.644128042928 2 28 32 60 1808
 vector 22 SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, vector(packetBytes)"
+22	19480 285 240 485 15.640753932042 17.195730552926 11 28 84 744 55968
 vector 23 SimpleRREQ.intermediateNode.wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet pushed, vector(packetBytes)"
+23	19765 285 240 485 15.640753932042 17.195730552926 11 28 84 744 55968
 vector 24 SimpleRREQ.intermediateNode.wlan[0].mac.queue queueLength:vector ETV
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, vector"
+24	20050 548 240 485 15.640753932042 17.195730552926 22 0 1 11 11
 vector 25 SimpleRREQ.intermediateNode.wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet popped, vector(packetBytes)"
+25	20598 285 240 485 15.640753932042 17.195730552926 11 28 84 744 55968
 vector 26 SimpleRREQ.intermediateNode.wlan[0].mac.queue queueingTime:vector ETV
 attr interpolationmode none
 attr source queueingTime(packetPopped)
 attr title "queueing times, vector"
 attr unit s
+26	20883 274 240 485 15.640753932042 17.195730552926 11 0 0 0 0
 vector 27 SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, vector(packetBytes)"
+27	21157 292 240 485 15.640753932042 17.195730552926 11 51 107 997 96011
 vector 28 SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, vector(packetBytes)"
+28	21449 264 247 463 15.641102475751 16.197160184053 10 51 107 890 84562
 vector 29 SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, vector(packetBytes)"
+29	21713 154 247 463 15.641102475751 16.197160184053 6 28 84 380 26960
 vector 30 SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromLower
 attr title "packets received from lower layer, vector(packetBytes)"
+30	21867 264 248 464 15.641102475751 16.197160184053 10 51 107 890 84562
 vector 31 SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed to higher layer, vector(packetBytes)"
+31	22131 156 248 443 15.641102475751 16.196207096635 6 28 84 360 25440
 vector 32 SimpleRREQ.sender.udp packetReceived:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, vector(packetBytes)"
+32	22287 52 251 320 15.641102475751 15.644965674055 2 28 32 60 1808
 vector 33 SimpleRREQ.sender.udp passedUpPk:vector(count) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, vector(count)"
+33	22339 50 251 320 15.641102475751 15.644965674055 2 1 2 3 5
 vector 34 SimpleRREQ.receiver.udp packetReceived:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceived
 attr title "packets received, vector(packetBytes)"
+34	22389 26 252 252 15.641102475751 15.641102475751 1 32 32 32 1024
 vector 35 SimpleRREQ.receiver.udp passedUpPk:vector(count) ETV
 attr interpolationmode none
 attr source packetSentToUpper
 attr title "packets passed up, vector(count)"
+35	22415 25 252 252 15.641102475751 15.641102475751 1 1 1 1 1
 vector 36 SimpleRREQ.receiver.udp packetSent:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSent
 attr title "packets sent, vector(packetBytes)"
+36	22440 26 255 255 15.641102475751 15.641102475751 1 28 28 28 784
 vector 37 SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes) ETV
 attr source arpRequestSent
 attr title "ARP request sent, vector(packetBytes)"
+37	22466 26 256 256 15.641102475751 15.641102475751 1 28 28 28 784
 vector 38 SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, vector(packetBytes)"
+38	22492 130 257 447 15.641102475751 16.196207096635 5 28 84 328 24256
 vector 39 SimpleRREQ.receiver.wlan[0].mac.queue packetPushed:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet pushed, vector(packetBytes)"
+39	22622 130 257 447 15.641102475751 16.196207096635 5 28 84 328 24256
 vector 40 SimpleRREQ.receiver.wlan[0].mac.queue queueLength:vector ETV
 attr interpolationmode sample-hold
 attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
 attr title "queue length, vector"
+40	22752 250 257 447 15.641102475751 16.196207096635 10 0 1 5 5
 vector 41 SimpleRREQ.receiver.wlan[0].mac.queue packetPopped:vector(packetBytes) ETV
 attr interpolationmode none
 attr title "packet popped, vector(packetBytes)"
+41	23002 130 257 447 15.641102475751 16.196207096635 5 28 84 328 24256
 vector 42 SimpleRREQ.receiver.wlan[0].mac.queue queueingTime:vector ETV
 attr interpolationmode none
 attr source queueingTime(packetPopped)
 attr title "queueing times, vector"
 attr unit s
+42	23132 125 257 447 15.641102475751 16.196207096635 5 0 0 0 0
 vector 43 SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetSentToLower
 attr title "packets sent to lower layer, vector(packetBytes)"
+43	23257 133 257 447 15.641102475751 16.196207096635 5 51 107 443 41989
 vector 44 SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes) ETV
 attr source arpReplySent
 attr title "ARP replies sent, vector(packetBytes)"
+44	23390 25 264 264 15.64135501946 15.64135501946 1 28 28 28 784
 vector 45 SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, vector(packetBytes)"
+45	23415 107 273 442 15.641607563169 16.196207096635 4 51 107 372 36948
 vector 46 SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes) ETV
 attr source arpRequestSent
 attr title "ARP request sent, vector(packetBytes)"
+46	23522 26 289 289 15.644128042928 15.644128042928 1 28 28 28 784
 vector 47 SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes) ETV
 attr source arpReplySent
 attr title "ARP replies sent, vector(packetBytes)"
+47	23548 26 299 299 15.644380586637 15.644380586637 1 28 28 28 784
 vector 48 SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
 attr interpolationmode none
 attr source packetDropReasonIsNotAddressedToUs(packetDropped)
 attr title "packet drop: not addressed to us, vector(packetBytes)"
+48	23574 105 318 464 15.644965674055 16.197160184053 4 71 107 392 39388
 vector 49 SimpleRREQ.sender.app[0] pingRxSeq:vector ETV
 attr interpolationmode none
 attr title "ping rx seq, vector"
+49	23679 76 391 466 15.646871848891 16.197160184053 3 11 13 36 434
 vector 50 SimpleRREQ.sender.app[0] rtt:vector ETV
 attr interpolationmode none
 attr title "ping round-trip time, vector"
 attr unit s
+50	23755 112 391 466 15.646871848891 16.197160184053 3 0.001906174836 1.451617839674 1.905618397893 2.3115873174488
 vector 51 SimpleRREQ.sender.app[0] numLost:vector ETV
 attr interpolationmode none
 attr title "pings lost, vector"
-0	11162 24 0 0 0 0 3 0 4 4 16
-1	11186 24 0 0 0 0 3 0 4 4 16
-2	11210 24 0 0 0 0 3 0 4 4 16
-3	11234 484 0 461 0 16.197160184053 21 1 3 41 101
-4	11718 710 0 481 0 17.195730009217 31 1 2 46 76
-5	12428 946 0 482 0 17.195730552926 41 1 3 81 201
-6	13374 510 0 486 0 17.195730552926 22 1 2 33 55
-7	13884 484 0 462 0 16.197160184053 21 1 3 41 101
-8	14368 248 0 451 0 16.196683096635 11 1 2 16 26
-9	14616 354 16 475 3.195254009217 17.195254009217 15 0 14 105 1015
-10	14970 251 20 224 3.198218232299 15.638483479792 10 32 32 320 10240
-11	15221 381 22 477 3.198218232299 17.195254009217 15 28 84 884 56048
-12	15602 381 22 477 3.198218232299 17.195254009217 15 28 84 884 56048
-13	15983 732 22 477 3.198218232299 17.195254009217 30 0 1 15 15
-14	16715 381 22 477 3.198218232299 17.195254009217 15 28 84 884 56048
-15	17096 379 22 477 3.198218232299 17.195254009217 15 0 0.000476543709 0.000476543709 2.2709390658748e-07
-16	17475 385 22 477 3.198218232299 17.195254009217 15 51 107 1229 104647
-17	17860 516 28 483 3.198566776008 17.195730552926 20 51 107 1672 146636
-18	18376 509 28 483 3.198566776008 17.195730552926 20 28 84 1212 80304
-19	18885 276 30 284 3.198566776008 15.641940106878 11 28 32 348 11024
-20	19161 267 30 284 3.198566776008 15.641940106878 11 1 11 66 506
-21	19428 52 238 288 15.640753932042 15.644128042928 2 28 32 60 1808
-22	19480 285 240 485 15.640753932042 17.195730552926 11 28 84 744 55968
-23	19765 285 240 485 15.640753932042 17.195730552926 11 28 84 744 55968
-24	20050 548 240 485 15.640753932042 17.195730552926 22 0 1 11 11
-25	20598 285 240 485 15.640753932042 17.195730552926 11 28 84 744 55968
-26	20883 274 240 485 15.640753932042 17.195730552926 11 0 0 0 0
-27	21157 292 240 485 15.640753932042 17.195730552926 11 51 107 997 96011
-28	21449 264 247 463 15.641102475751 16.197160184053 10 51 107 890 84562
-29	21713 154 247 463 15.641102475751 16.197160184053 6 28 84 380 26960
-30	21867 264 248 464 15.641102475751 16.197160184053 10 51 107 890 84562
-31	22131 156 248 443 15.641102475751 16.196207096635 6 28 84 360 25440
-32	22287 52 251 320 15.641102475751 15.644965674055 2 28 32 60 1808
-33	22339 50 251 320 15.641102475751 15.644965674055 2 1 2 3 5
-34	22389 26 252 252 15.641102475751 15.641102475751 1 32 32 32 1024
-35	22415 25 252 252 15.641102475751 15.641102475751 1 1 1 1 1
-36	22440 26 255 255 15.641102475751 15.641102475751 1 28 28 28 784
-37	22466 26 256 256 15.641102475751 15.641102475751 1 28 28 28 784
-38	22492 130 257 447 15.641102475751 16.196207096635 5 28 84 328 24256
-39	22622 130 257 447 15.641102475751 16.196207096635 5 28 84 328 24256
-40	22752 250 257 447 15.641102475751 16.196207096635 10 0 1 5 5
-41	23002 130 257 447 15.641102475751 16.196207096635 5 28 84 328 24256
-42	23132 125 257 447 15.641102475751 16.196207096635 5 0 0 0 0
-43	23257 133 257 447 15.641102475751 16.196207096635 5 51 107 443 41989
-44	23390 25 264 264 15.64135501946 15.64135501946 1 28 28 28 784
-45	23415 107 273 442 15.641607563169 16.196207096635 4 51 107 372 36948
-46	23522 26 289 289 15.644128042928 15.644128042928 1 28 28 28 784
-47	23548 26 299 299 15.644380586637 15.644380586637 1 28 28 28 784
-48	23574 105 318 464 15.644965674055 16.197160184053 4 71 107 392 39388
-49	23679 76 391 466 15.646871848891 16.197160184053 3 11 13 36 434
-50	23755 112 391 466 15.646871848891 16.197160184053 3 0.001906174836 1.451617839674 1.905618397893 2.3115873174488
-51	23867 26 391 391 15.646871848891 15.646871848891 1 11 11 11 121
-
+51	23867 27 391 391 15.646871848891 15.646871848891 1 11 11 11 121
