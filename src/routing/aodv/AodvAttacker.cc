@@ -15,8 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
-
-
+#include "cryptopp/sha.h"
 #include "AodvAttacker.h"
 
 #include "inet/common/IProtocolRegistrationListener.h"
@@ -421,6 +420,7 @@ const Ptr<Rreq> AodvAttacker::createRREQ(const L3Address& destAddr)
 
     rreqPacket->setOriginatorAddr(getSelfIPAddress());
     rreqPacket->setDestAddr(destAddr);
+
 
     // The RREQ ID field is incremented by one from the last RREQ ID used
     // by the current node. Each node maintains only one RREQ ID.

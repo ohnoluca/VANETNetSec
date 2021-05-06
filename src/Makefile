@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for $(LIB_PREFIX)VanetNetSec
 #
 # This file was generated with the command:
-#  opp_makemake --make-so -f --deep -KINET_PROJ=/home/veins/src/inet -KVEINS_PROJ=/home/veins/src/veins -DINET_IMPORT -DVEINS_IMPORT -I$$\(INET_PROJ\)/src -I$$\(VEINS_PROJ\)/src -I. -L$$\(INET_PROJ\)/src -L$$\(VEINS_PROJ\)/src -lINET$$\(D\) -lveins$$\(D\)
+#  opp_makemake --make-so -f --deep -KINET_PROJ=/home/veins/src/inet -KVEINS_PROJ=/home/veins/src/veins -DINET_IMPORT -DVEINS_IMPORT -I$$\(INET_PROJ\)/src -I$$\(VEINS_PROJ\)/src -I. -L$$\(INET_PROJ\)/src -L$$\(VEINS_PROJ\)/src -lcryptopp -lINET$$\(D\) -lveins$$\(D\)
 #
 
 # Name of target to be created (-o option)
@@ -16,7 +16,7 @@ INCLUDE_PATH = -I$(INET_PROJ)/src -I$(VEINS_PROJ)/src -I.
 EXTRA_OBJS =
 
 # Additional libraries (-L, -l options)
-LIBS = $(LDFLAG_LIBPATH)$(INET_PROJ)/src $(LDFLAG_LIBPATH)$(VEINS_PROJ)/src  -lINET$(D) -lveins$(D)
+LIBS = $(LDFLAG_LIBPATH)$(INET_PROJ)/src $(LDFLAG_LIBPATH)$(VEINS_PROJ)/src  -lcryptopp -lINET$(D) -lveins$(D)
 
 # Output directory
 PROJECT_OUTPUT_DIR = ../out
