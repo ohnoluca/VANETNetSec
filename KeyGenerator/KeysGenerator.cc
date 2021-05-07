@@ -41,7 +41,7 @@ void SavePublicKeyECC_int_and_auth( const string& filename, const ECDSA<ECP, SHA
 
 void GenKeyPairRSA()
 {
-    // InvertibleRSAFunction is used directly only because the private key
+    // InvertibleRSAFunction is used directly only because the private ke
     // won't actually be used to perform any cryptographic operation;
     // otherwise, an appropriate typedef'ed type from rsa.h would have been used.
     AutoSeededRandomPool rng;
