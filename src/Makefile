@@ -27,6 +27,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 OBJS = \
     $O/routing/aodv/AodvAttacker.o \
     $O/routing/aodv/AodvBase.o \
+    $O/routing/aodv/SecureAodv.o \
     $O/veins_inet/VeinsInetApplicationBase.o \
     $O/veins_inet/VeinsInetManager.o \
     $O/veins_inet/VeinsInetMobility.o \

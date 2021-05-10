@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
-#include "cryptopp/sha.h"
+
 #include "AodvAttacker.h"
 
 #include "inet/common/IProtocolRegistrationListener.h"
@@ -33,12 +33,20 @@
 #include "inet/transportlayer/common/L4PortTag_m.h"
 #include "inet/transportlayer/contract/udp/UdpControlInfo.h"
 
+#include <string>
+using namespace std;
+#include "cryptopp/rsa.h"
+#include "cryptopp/osrng.h"
+#include "cryptopp/base64.h"
+#include "cryptopp/files.h"
+using namespace CryptoPP;
 
 namespace inet {
 namespace aodv {
 namespace netsec{
 
 Define_Module(AodvAttacker);
+
 
 const int KIND_DELAYEDSEND = 100;
 
