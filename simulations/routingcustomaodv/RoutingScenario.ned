@@ -22,8 +22,6 @@
 
 package vanetnetsec.simulations.routingcustomaodv;
 
-import vanetnetsec.node.aodv.AodvRouterAttacker;
-import vanetnetsec.node.aodv.AodvRouterBase;
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import inet.visualizer.integrated.IntegratedVisualizer;
 import org.car2x.veins.visualizer.roads.RoadsCanvasVisualizer;

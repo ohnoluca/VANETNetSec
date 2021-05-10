@@ -26,8 +26,6 @@ class Rrep;
 struct UnreachableNode;
 class Rerr;
 class RrepAck;
-class RreqSec;
-class RrepSec;
 class WaitForRrep;
 class PacketHolderMessage;
 } // namespace aodv
@@ -66,8 +64,6 @@ enum AodvControlPacketType {
     RREP = 2,
     RERR = 3,
     RREPACK = 4,
-    RREQSEC = 5,
-    RREPSEC = 6,
     RREQ_IPv6 = 16,
     RREP_IPv6 = 17,
     RERR_IPv6 = 18,
@@ -413,188 +409,6 @@ inline void doParsimUnpacking(omnetpp::cCommBuffer *b, RrepAck& obj) {obj.parsim
  * }
  * </pre>
  */
-
-
-//AGGIUNGO RREQSEC ed RREPSEC
-class RreqSec : public ::inet::aodv::AodvControlPacket
-{
-  protected:
-    bool joinFlag = false;
-    bool repairFlag = false;
-    bool gratuitousRREPFlag = false;
-    bool destOnlyFlag = false;
-    bool unknownSeqNumFlag = false;
-    uint16_t reserved = 0;
-    unsigned int hopCount = 0;
-    uint32_t rreqId = 0;
-    L3Address destAddr;
-    uint32_t destSeqNum = 0;
-    L3Address originatorAddr;
-    uint32_t originatorSeqNum = 0;
-    //aggiunti
-    omnetpp::opp_string hash;
-    int length = 0;
-    omnetpp::opp_string signature;
-
-  private:
-    void copy(const RreqSec& other);
-
-  protected:
-    // protected and unimplemented operator==(), to prevent accidental usage
-    bool operator==(const RreqSec&);
-
-  public:
-    RreqSec();
-    RreqSec(const RreqSec& other);
-    virtual ~RreqSec();
-    RreqSec& operator=(const RreqSec& other);
-    virtual RreqSec *dup() const override {return new RreqSec(*this);}
-    virtual void parsimPack(omnetpp::cCommBuffer *b) const override;
-    virtual void parsimUnpack(omnetpp::cCommBuffer *b) override;
-
-    // field getter/setter methods
-    virtual bool getJoinFlag() const;
-    virtual void setJoinFlag(bool joinFlag);
-    virtual bool getRepairFlag() const;
-    virtual void setRepairFlag(bool repairFlag);
-    virtual bool getGratuitousRREPFlag() const;
-    virtual void setGratuitousRREPFlag(bool gratuitousRREPFlag);
-    virtual bool getDestOnlyFlag() const;
-    virtual void setDestOnlyFlag(bool destOnlyFlag);
-    virtual bool getUnknownSeqNumFlag() const;
-    virtual void setUnknownSeqNumFlag(bool unknownSeqNumFlag);
-    virtual uint16_t getReserved() const;
-    virtual void setReserved(uint16_t reserved);
-    virtual unsigned int getHopCount() const;
-    virtual void setHopCount(unsigned int hopCount);
-    virtual uint32_t getRreqId() const;
-    virtual void setRreqId(uint32_t rreqId);
-    virtual const L3Address& getDestAddr() const;
-    virtual L3Address& getDestAddrForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<RreqSec*>(this)->getDestAddr());}
-    virtual void setDestAddr(const L3Address& destAddr);
-    virtual uint32_t getDestSeqNum() const;
-    virtual void setDestSeqNum(uint32_t destSeqNum);
-    virtual const L3Address& getOriginatorAddr() const;
-    virtual L3Address& getOriginatorAddrForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<RreqSec*>(this)->getOriginatorAddr());}
-    virtual void setOriginatorAddr(const L3Address& originatorAddr);
-    virtual uint32_t getOriginatorSeqNum() const;
-    virtual void setOriginatorSeqNum(uint32_t originatorSeqNum);
-    //aggiunti
-    virtual const char * getHash() const;
-    virtual void setHash(const char * hash);
-    virtual int getLength() const;
-    virtual void setLength(int length);
-    virtual const char * getSignature() const;
-    virtual void setSignature(const char * signature);
-};
-
-inline void doParsimPacking(omnetpp::cCommBuffer *b, const RreqSec& obj) {obj.parsimPack(b);}
-inline void doParsimUnpacking(omnetpp::cCommBuffer *b, RreqSec& obj) {obj.parsimUnpack(b);}
-
-/**
- * Class generated from <tt>routing/aodv/AodvControlPackets.msg:71</tt> by nedtool.
- * <pre>
- * //
- * // Represents an AODV Route Reply
- * //
- * class Rrep extends AodvControlPacket
- * {
- *     // chunkLength = B(20) or B(44)
- *     // packetType = RREP or RREP_IPv6
- *     bool repairFlag;    // Repair flag; used for multicast.
- *     bool ackRequiredFlag;    // Acknowledgment required.
- *     uint16_t reserved = 0;    // Sent as 0; ignored on reception.
- *     unsigned int prefixSize;    // If nonzero, the 5-bit Prefix Size specifies that the indicated next hop may be used for any nodes with the same routing prefix (as defined by the Prefix Size) as the requested destination.
- *     unsigned int hopCount;    // The number of hops from the Originator IP Address to the Destination IP Address.  For multicast route requests this indicates the number of hops to the multicast tree member sending the RREP.
- *     L3Address destAddr;    // The IP address of the destination for which a route is supplied.
- *     uint32_t destSeqNum;    // The destination sequence number associated to the route.
- *     L3Address originatorAddr;    // The IP address of the node which originated the RREQ for which the route is supplied.
- *     simtime_t lifeTime;     // The time in milliseconds for which nodes receiving the RREP consider the route to be valid.
- * }
- * </pre>
- */
-class RrepSec : public ::inet::aodv::AodvControlPacket
-{
-  protected:
-    bool repairFlag = false;
-    bool ackRequiredFlag = false;
-    uint16_t reserved = 0;
-    unsigned int prefixSize = 0;
-    unsigned int hopCount = 0;
-    L3Address destAddr;
-    uint32_t destSeqNum = 0;
-    L3Address originatorAddr;
-    omnetpp::simtime_t lifeTime = SIMTIME_ZERO;
-    //aggiunti
-    omnetpp::opp_string hash;
-    int length = 0;
-    omnetpp::opp_string signature;
-
-  private:
-    void copy(const RrepSec& other);
-
-  protected:
-    // protected and unimplemented operator==(), to prevent accidental usage
-    bool operator==(const RrepSec&);
-
-  public:
-    RrepSec();
-    RrepSec(const RrepSec& other);
-    virtual ~RrepSec();
-    RrepSec& operator=(const RrepSec& other);
-    virtual RrepSec *dup() const override {return new RrepSec(*this);}
-    virtual void parsimPack(omnetpp::cCommBuffer *b) const override;
-    virtual void parsimUnpack(omnetpp::cCommBuffer *b) override;
-
-    // field getter/setter methods
-    virtual bool getRepairFlag() const;
-    virtual void setRepairFlag(bool repairFlag);
-    virtual bool getAckRequiredFlag() const;
-    virtual void setAckRequiredFlag(bool ackRequiredFlag);
-    virtual uint16_t getReserved() const;
-    virtual void setReserved(uint16_t reserved);
-    virtual unsigned int getPrefixSize() const;
-    virtual void setPrefixSize(unsigned int prefixSize);
-    virtual unsigned int getHopCount() const;
-    virtual void setHopCount(unsigned int hopCount);
-    virtual const L3Address& getDestAddr() const;
-    virtual L3Address& getDestAddrForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<RrepSec*>(this)->getDestAddr());}
-    virtual void setDestAddr(const L3Address& destAddr);
-    virtual uint32_t getDestSeqNum() const;
-    virtual void setDestSeqNum(uint32_t destSeqNum);
-    virtual const L3Address& getOriginatorAddr() const;
-    virtual L3Address& getOriginatorAddrForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<RrepSec*>(this)->getOriginatorAddr());}
-    virtual void setOriginatorAddr(const L3Address& originatorAddr);
-    virtual omnetpp::simtime_t getLifeTime() const;
-    virtual void setLifeTime(omnetpp::simtime_t lifeTime);
-    //aggiunti
-    virtual const char * getHash() const;
-    virtual void setHash(const char * hash);
-    virtual int getLength() const;
-    virtual void setLength(int length);
-    virtual const char * getSignature() const;
-    virtual void setSignature(const char * signature);
-};
-
-inline void doParsimPacking(omnetpp::cCommBuffer *b, const RrepSec& obj) {obj.parsimPack(b);}
-inline void doParsimUnpacking(omnetpp::cCommBuffer *b, RrepSec& obj) {obj.parsimUnpack(b);}
-/**
- * Class generated from <tt>routing/aodv/AodvControlPackets.msg:98</tt> by nedtool.
- * <pre>
- * //
- * // Represents an AODV Route Error
- * //
- * class Rerr extends AodvControlPacket
- * {
- *     // chunkLength = B(4 + N * (4+4)) or B(4 + N * (4+16))
- *     // packetType = RERR or RERR_IPv6
- *     bool noDeleteFlag;    // No delete flag; set when a node has performed a local repair of a link, and upstream nodes should not delete the route.
- *     uint16_t reserved = 0;    // Sent as 0; ignored on reception.
- *     UnreachableNode unreachableNodes[];    // The unreachable destinations included in the message; MUST be at least 1.
- * }
- * </pre>
- */
-
 class WaitForRrep : public ::omnetpp::cMessage
 {
   protected:
