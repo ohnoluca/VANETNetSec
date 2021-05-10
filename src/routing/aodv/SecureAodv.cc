@@ -355,7 +355,7 @@ void SecureAodv::delayDatagram(Packet *datagram)
     targetAddressToDelayedPackets.insert(std::pair<L3Address, Packet *>(target, datagram));
 }
 
-void SecureAodv::sendRREQ(const Ptr<Rreq>& rreq, const L3Address& destAddr, unsigned int timeToLive)
+void SecureAodv::sendRREQ(const Ptr<RreqSec>& rreq, const L3Address& destAddr, unsigned int timeToLive)
 {
     // In an expanding ring search, the originating node initially uses a TTL =
     // TTL_START in the RREQ packet IP header and sets the timeout for
@@ -461,9 +461,9 @@ void SecureAodv::sendRREP(const Ptr<Rrep>& rrep, const L3Address& destAddr, unsi
     sendAODVPacket(rrep, nextHop, timeToLive, 0);
 }
 
-const Ptr<Rreq> SecureAodv::createRREQ(const L3Address& destAddr)
+const Ptr<RreqSec> SecureAodv::createRREQ(const L3Address& destAddr)
 {
-    auto rreqPacket = makeShared<Rreq>(); // TODO: "AODV-RREQ");
+    auto rreqPacket = makeShared<RreqSec>(); // TODO: "AODV-RREQ");
     rreqPacket->setPacketType(usingIpv6 ? RREQ_IPv6 : RREQ);
     rreqPacket->setChunkLength(usingIpv6 ? B(48) : B(24));
 
@@ -495,6 +495,22 @@ const Ptr<Rreq> SecureAodv::createRREQ(const L3Address& destAddr)
 
     rreqPacket->setOriginatorAddr(getSelfIPAddress());
     rreqPacket->setDestAddr(destAddr);
+
+
+    //INSERIMENTO DEL CAMPO CHECK NEL PACCHETTO (CIFRATURA DestAddr)
+
+    std::string destAddrString = rreqPacket->getDestAddr().str();
+    std::string message = destAddrString;
+
+    std::string messageBase64;
+    CryptoPP::StringSource ss(message, true,new CryptoPP::Base64Encoder(new CryptoPP::StringSink(messageBase64)));
+    std::string signature = sign(messageBase64);
+
+    rreqPacket->setHash(signature.c_str());
+    rreqPacket->setLength(len);
+    rreqPacket->setSignature("pippo");
+
+    //FINE INSERIMENTO
 
 
     // The RREQ ID field is incremented by one from the last RREQ ID used

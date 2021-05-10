@@ -53,7 +53,7 @@
   /home/veins/src/inet/src/inet/networklayer/common/L3Address_m.h \
   /home/veins/src/inet/src/inet/networklayer/contract/IRoutingTable.h \
   /home/veins/src/inet/src/inet/networklayer/contract/IRoute.h \
-  /home/veins/src/inet/src/inet/routing/aodv/AodvControlPackets_m.h \
+  routing/aodv/AodvControlPackets_m.h \
   /home/veins/src/inet/src/inet/common/packet/Packet_m.h \
   /home/veins/src/inet/src/inet/routing/aodv/AodvRouteData.h \
   /home/veins/src/inet/src/inet/routing/base/RoutingProtocolBase.h \
@@ -195,7 +195,7 @@ routing/aodv/SecureAodv.h:
 
 /home/veins/src/inet/src/inet/networklayer/contract/IRoute.h:
 
-/home/veins/src/inet/src/inet/routing/aodv/AodvControlPackets_m.h:
+routing/aodv/AodvControlPackets_m.h:
 
 /home/veins/src/inet/src/inet/common/packet/Packet_m.h:
 

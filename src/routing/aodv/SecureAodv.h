@@ -26,7 +26,7 @@
 #include "inet/networklayer/contract/IL3AddressType.h"
 #include "inet/networklayer/contract/INetfilter.h"
 #include "inet/networklayer/contract/IRoutingTable.h"
-#include "inet/routing/aodv/AodvControlPackets_m.h"
+#include "AodvControlPackets_m.h"
 #include "inet/routing/aodv/AodvRouteData.h"
 #include "inet/routing/base/RoutingProtocolBase.h"
 #include "inet/transportlayer/contract/udp/UdpSocket.h"
@@ -162,7 +162,7 @@ class INET_API SecureAodv : public RoutingProtocolBase, public NetfilterBase::Ho
     /* Control packet creators */
     const Ptr<RrepAck> createRREPACK();
     const Ptr<Rrep> createHelloMessage();
-    const Ptr<Rreq> createRREQ(const L3Address& destAddr);
+    const Ptr<RreqSec> createRREQ(const L3Address& destAddr);
     const Ptr<Rrep> createRREP(const Ptr<Rreq>& rreq, IRoute *destRoute, IRoute *originatorRoute, const L3Address& sourceAddr);
     const Ptr<Rrep> createGratuitousRREP(const Ptr<Rreq>& rreq, IRoute *originatorRoute);
     const Ptr<Rerr> createRERR(const std::vector<UnreachableNode>& unreachableNodes);
@@ -175,7 +175,7 @@ class INET_API SecureAodv : public RoutingProtocolBase, public NetfilterBase::Ho
     void handleRREPACK(const Ptr<const RrepAck>& rrepACK, const L3Address& neighborAddr);
 
     /* Control Packet sender methods */
-    void sendRREQ(const Ptr<Rreq>& rreq, const L3Address& destAddr, unsigned int timeToLive);
+    void sendRREQ(const Ptr<RreqSec>& rreq, const L3Address& destAddr, unsigned int timeToLive);
     void sendRREPACK(const Ptr<RrepAck>& rrepACK, const L3Address& destAddr);
     void sendRREP(const Ptr<Rrep>& rrep, const L3Address& destAddr, unsigned int timeToLive);
     void sendGRREP(const Ptr<Rrep>& grrep, const L3Address& destAddr, unsigned int timeToLive);
