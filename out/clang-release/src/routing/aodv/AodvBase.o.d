@@ -71,7 +71,7 @@
   /home/veins/src/inet/src/inet/networklayer/contract/IL3AddressType.h \
   /home/veins/src/inet/src/inet/networklayer/contract/INetfilter.h \
   /home/veins/src/inet/src/inet/common/stlutils.h \
-  /home/veins/src/inet/src/inet/routing/aodv/AodvControlPackets_m.h \
+  routing/aodv/AodvControlPackets_m.h \
   /home/veins/src/inet/src/inet/common/packet/Packet_m.h \
   /home/veins/src/inet/src/inet/routing/aodv/AodvRouteData.h \
   /home/veins/src/inet/src/inet/routing/base/RoutingProtocolBase.h \
@@ -230,7 +230,7 @@ routing/aodv/AodvBase.h:
 
 /home/veins/src/inet/src/inet/common/stlutils.h:
 
-/home/veins/src/inet/src/inet/routing/aodv/AodvControlPackets_m.h:
+routing/aodv/AodvControlPackets_m.h:
 
 /home/veins/src/inet/src/inet/common/packet/Packet_m.h:
 

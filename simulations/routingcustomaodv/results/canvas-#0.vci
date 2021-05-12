@@ -1,15 +1,15 @@
-file 8240 1620656511                                            
+file 15599 1620813624                                           
 version 2
-run canvas-0-20210510-14:21:22-10072
+run canvas-0-20210512-09:59:10-6564
 attr configname canvas
-attr datetime 20210510-14:21:22
+attr datetime 20210512-09:59:10
 attr experiment canvas
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network RoutingScenario
-attr processid 10072
+attr processid 6564
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -29,9 +29,9 @@ param *.visualizer.*.mobilityVisualizer.displayOrientations true
 param *.visualizer.*.mobilityVisualizer.displayVelocities true
 param *.visualizer.*.mobilityVisualizer.displayMovementTrails true
 param *.visualizer.*.mobilityVisualizer.moduleFilter "\"**.antenna.mobility\""
-param *.node[1].router "\"AodvAttacker\""
-param *.node[2].router "\"AodvBase\""
-param *.node[*].router "\"AodvBase\""
+param *.node[1].router "\"SecureAodv\""
+param *.node[2].router "\"SecureAodv\""
+param *.node[*].router "\"SecureAodv\""
 param RoutingScenario.numV 25
 param *.node[*].numApps 1
 param *.node[*].app[0].typename "\"UdpBasicApp\""
@@ -102,15 +102,15 @@ attr title "packets dropped (wrong port), vector(count)"
 1	4625 10 2 2 0.1 0.1 1 3 3 3 9
 2	4635 10 2 2 0.1 0.1 1 1 1 1 1
 3	4645 11 2 2 0.1 0.1 1 15 15 15 225
-4	4656 568 5 141 0.1 0.442007524315 23 1000 1000 23000 23000000
-5	5224 568 7 142 0.1 0.442007524315 23 1008 1008 23184 23369472
-6	5792 569 9 144 0.1 0.442007524315 23 1028 1028 23644 24306032
-7	6361 569 9 144 0.1 0.442007524315 23 1028 1028 23644 24306032
-8	6930 570 11 146 0.1 0.442007524315 23 1008 1008 23184 23369472
-9	7500 515 11 146 0.1 0.442007524315 23 1 23 276 4324
+4	4656 1808 5 434 0.1 0.935995129175 71 1000 1000 71000 71000000
+5	6464 1808 7 435 0.1 0.935995129175 71 1008 1008 71568 72140544
+6	8272 1809 9 437 0.1 0.935995129175 71 1028 1028 72988 75031664
+7	10081 1809 9 437 0.1 0.935995129175 71 1028 1028 72988 75031664
+8	11890 1784 11 432 0.1 0.89100675166 70 1008 1008 70560 71124480
+9	13674 1635 11 432 0.1 0.89100675166 70 1 70 2485 116795
 vector 10 RoutingScenario.node[0].app[0] throughput:vector ETV
 attr source throughput(packetReceived)
 attr title "throughput, vector"
 attr unit bps
-10	8163 76 146 146 0.1 0.442007524315 5 0 0 0 0
+10	15457 141 438 438 0.1 0.935995129175 10 0 0 0 0
 

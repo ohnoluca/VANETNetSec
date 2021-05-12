@@ -26,6 +26,8 @@ class Rrep;
 struct UnreachableNode;
 class Rerr;
 class RrepAck;
+class RreqSec;
+class RrepSec;
 class WaitForRrep;
 class PacketHolderMessage;
 } // namespace aodv
@@ -52,6 +54,8 @@ namespace aodv {
  *     RREP = 2;
  *     RERR = 3;
  *     RREPACK = 4;
+ *     RREQSEC = 5;
+ *     RREPSEC = 6;
  *     RREQ_IPv6 = 16;
  *     RREP_IPv6 = 17;
  *     RERR_IPv6 = 18;
@@ -64,6 +68,8 @@ enum AodvControlPacketType {
     RREP = 2,
     RERR = 3,
     RREPACK = 4,
+    RREQSEC = 5,
+    RREPSEC = 6,
     RREQ_IPv6 = 16,
     RREP_IPv6 = 17,
     RERR_IPv6 = 18,
@@ -71,7 +77,7 @@ enum AodvControlPacketType {
 };
 
 /**
- * Class generated from <tt>routing/aodv/AodvControlPackets.msg:42</tt> by nedtool.
+ * Class generated from <tt>routing/aodv/AodvControlPackets.msg:44</tt> by nedtool.
  * <pre>
  * //
  * // Base packet for AODV Control Packets
@@ -112,7 +118,7 @@ inline void doParsimPacking(omnetpp::cCommBuffer *b, const AodvControlPacket& ob
 inline void doParsimUnpacking(omnetpp::cCommBuffer *b, AodvControlPacket& obj) {obj.parsimUnpack(b);}
 
 /**
- * Class generated from <tt>routing/aodv/AodvControlPackets.msg:50</tt> by nedtool.
+ * Class generated from <tt>routing/aodv/AodvControlPackets.msg:52</tt> by nedtool.
  * <pre>
  * //
  * // Represents an AODV Route Request
@@ -201,7 +207,7 @@ inline void doParsimPacking(omnetpp::cCommBuffer *b, const Rreq& obj) {obj.parsi
 inline void doParsimUnpacking(omnetpp::cCommBuffer *b, Rreq& obj) {obj.parsimUnpack(b);}
 
 /**
- * Class generated from <tt>routing/aodv/AodvControlPackets.msg:71</tt> by nedtool.
+ * Class generated from <tt>routing/aodv/AodvControlPackets.msg:73</tt> by nedtool.
  * <pre>
  * //
  * // Represents an AODV Route Reply
@@ -278,7 +284,7 @@ inline void doParsimPacking(omnetpp::cCommBuffer *b, const Rrep& obj) {obj.parsi
 inline void doParsimUnpacking(omnetpp::cCommBuffer *b, Rrep& obj) {obj.parsimUnpack(b);}
 
 /**
- * Struct generated from routing/aodv/AodvControlPackets.msg:89 by nedtool.
+ * Struct generated from routing/aodv/AodvControlPackets.msg:91 by nedtool.
  */
 struct UnreachableNode
 {
@@ -295,7 +301,7 @@ inline void doParsimPacking(omnetpp::cCommBuffer *b, const UnreachableNode& obj)
 inline void doParsimUnpacking(omnetpp::cCommBuffer *b, UnreachableNode& obj) { __doUnpacking(b, obj); }
 
 /**
- * Class generated from <tt>routing/aodv/AodvControlPackets.msg:98</tt> by nedtool.
+ * Class generated from <tt>routing/aodv/AodvControlPackets.msg:100</tt> by nedtool.
  * <pre>
  * //
  * // Represents an AODV Route Error
@@ -353,7 +359,7 @@ inline void doParsimPacking(omnetpp::cCommBuffer *b, const Rerr& obj) {obj.parsi
 inline void doParsimUnpacking(omnetpp::cCommBuffer *b, Rerr& obj) {obj.parsimUnpack(b);}
 
 /**
- * Class generated from <tt>routing/aodv/AodvControlPackets.msg:110</tt> by nedtool.
+ * Class generated from <tt>routing/aodv/AodvControlPackets.msg:112</tt> by nedtool.
  * <pre>
  * //
  * // Represents an AODV Route Reply ACK
@@ -364,6 +370,10 @@ inline void doParsimUnpacking(omnetpp::cCommBuffer *b, Rerr& obj) {obj.parsimUnp
  *     // packetType = RREPACK or RREPACK_IPv6
  *     uint8_t reserved = 0;
  * }
+ * 
+ * 
+ * 
+ * // =========================== AGGIUNTO DA NOI ==============================
  * </pre>
  */
 class RrepAck : public ::inet::aodv::AodvControlPacket
@@ -396,7 +406,197 @@ inline void doParsimPacking(omnetpp::cCommBuffer *b, const RrepAck& obj) {obj.pa
 inline void doParsimUnpacking(omnetpp::cCommBuffer *b, RrepAck& obj) {obj.parsimUnpack(b);}
 
 /**
- * Class generated from <tt>routing/aodv/AodvControlPackets.msg:120</tt> by nedtool.
+ * Class generated from <tt>routing/aodv/AodvControlPackets.msg:123</tt> by nedtool.
+ * <pre>
+ * class RreqSec extends AodvControlPacket
+ * {
+ *     // chunkLength = B(24) or B(48)
+ *     // packetType = RREQ or RREQ_IPv6
+ *     bool joinFlag;    // Join flag; reserved for multicast.
+ *     bool repairFlag;    // Repair flag; reserved for multicast.
+ *     bool gratuitousRREPFlag;    // Gratuitous RREP flag; indicates whether a gratuitous RREP should be unicast to the node specified in the Destination IP Address field
+ *     bool destOnlyFlag;    // Destination only flag; indicates only the destination may respond to this RREQ
+ *     bool unknownSeqNumFlag;    // Unknown sequence number; indicates the destination sequence number is unknown
+ *     uint16_t reserved = 0;    // Sent as 0; ignored on reception.
+ *     unsigned int hopCount;    // The number of hops from the Originator IP Address to the node handling the request.
+ *     uint32_t rreqId;    // A sequence number uniquely identifying the particular RREQ when taken in conjunction with the originating node's IP address.
+ *     L3Address destAddr;    // The IP address of the destination for which a route is desired.
+ *     uint32_t destSeqNum;    // The latest sequence number received in the past by the originator for any route towards the destination.
+ *     L3Address originatorAddr;    // The IP address of the node which originated the Route Request.
+ *     uint32_t originatorSeqNum;    // The current sequence number to be used in the route entry pointing towards the originator of the route request.
+ *     string hash;
+ *     int length;
+ *     string signature;
+ * }
+ * </pre>
+ */
+class RreqSec : public ::inet::aodv::AodvControlPacket
+{
+  protected:
+    bool joinFlag = false;
+    bool repairFlag = false;
+    bool gratuitousRREPFlag = false;
+    bool destOnlyFlag = false;
+    bool unknownSeqNumFlag = false;
+    uint16_t reserved = 0;
+    unsigned int hopCount = 0;
+    uint32_t rreqId = 0;
+    L3Address destAddr;
+    uint32_t destSeqNum = 0;
+    L3Address originatorAddr;
+    uint32_t originatorSeqNum = 0;
+    omnetpp::opp_string hash;
+    int length = 0;
+    omnetpp::opp_string signature;
+
+  private:
+    void copy(const RreqSec& other);
+
+  protected:
+    // protected and unimplemented operator==(), to prevent accidental usage
+    bool operator==(const RreqSec&);
+
+  public:
+    RreqSec();
+    RreqSec(const RreqSec& other);
+    virtual ~RreqSec();
+    RreqSec& operator=(const RreqSec& other);
+    virtual RreqSec *dup() const override {return new RreqSec(*this);}
+    virtual void parsimPack(omnetpp::cCommBuffer *b) const override;
+    virtual void parsimUnpack(omnetpp::cCommBuffer *b) override;
+
+    // field getter/setter methods
+    virtual bool getJoinFlag() const;
+    virtual void setJoinFlag(bool joinFlag);
+    virtual bool getRepairFlag() const;
+    virtual void setRepairFlag(bool repairFlag);
+    virtual bool getGratuitousRREPFlag() const;
+    virtual void setGratuitousRREPFlag(bool gratuitousRREPFlag);
+    virtual bool getDestOnlyFlag() const;
+    virtual void setDestOnlyFlag(bool destOnlyFlag);
+    virtual bool getUnknownSeqNumFlag() const;
+    virtual void setUnknownSeqNumFlag(bool unknownSeqNumFlag);
+    virtual uint16_t getReserved() const;
+    virtual void setReserved(uint16_t reserved);
+    virtual unsigned int getHopCount() const;
+    virtual void setHopCount(unsigned int hopCount);
+    virtual uint32_t getRreqId() const;
+    virtual void setRreqId(uint32_t rreqId);
+    virtual const L3Address& getDestAddr() const;
+    virtual L3Address& getDestAddrForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<RreqSec*>(this)->getDestAddr());}
+    virtual void setDestAddr(const L3Address& destAddr);
+    virtual uint32_t getDestSeqNum() const;
+    virtual void setDestSeqNum(uint32_t destSeqNum);
+    virtual const L3Address& getOriginatorAddr() const;
+    virtual L3Address& getOriginatorAddrForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<RreqSec*>(this)->getOriginatorAddr());}
+    virtual void setOriginatorAddr(const L3Address& originatorAddr);
+    virtual uint32_t getOriginatorSeqNum() const;
+    virtual void setOriginatorSeqNum(uint32_t originatorSeqNum);
+    virtual const char * getHash() const;
+    virtual void setHash(const char * hash);
+    virtual int getLength() const;
+    virtual void setLength(int length);
+    virtual const char * getSignature() const;
+    virtual void setSignature(const char * signature);
+};
+
+inline void doParsimPacking(omnetpp::cCommBuffer *b, const RreqSec& obj) {obj.parsimPack(b);}
+inline void doParsimUnpacking(omnetpp::cCommBuffer *b, RreqSec& obj) {obj.parsimUnpack(b);}
+
+/**
+ * Class generated from <tt>routing/aodv/AodvControlPackets.msg:147</tt> by nedtool.
+ * <pre>
+ * //
+ * // Represents an AODV Route Reply
+ * //
+ * class RrepSec extends AodvControlPacket
+ * {
+ *     // chunkLength = B(20) or B(44)
+ *     // packetType = RREP or RREP_IPv6
+ *     bool repairFlag;    // Repair flag; used for multicast.
+ *     bool ackRequiredFlag;    // Acknowledgment required.
+ *     uint16_t reserved = 0;    // Sent as 0; ignored on reception.
+ *     unsigned int prefixSize;    // If nonzero, the 5-bit Prefix Size specifies that the indicated next hop may be used for any nodes with the same routing prefix (as defined by the Prefix Size) as the requested destination.
+ *     unsigned int hopCount;    // The number of hops from the Originator IP Address to the Destination IP Address.  For multicast route requests this indicates the number of hops to the multicast tree member sending the RREP.
+ *     L3Address destAddr;    // The IP address of the destination for which a route is supplied.
+ *     uint32_t destSeqNum;    // The destination sequence number associated to the route.
+ *     L3Address originatorAddr;    // The IP address of the node which originated the RREQ for which the route is supplied.
+ *     simtime_t lifeTime;     // The time in milliseconds for which nodes receiving the RREP consider the route to be valid.
+ *     string hash;
+ *     int length;
+ *     string signature;
+ * }
+ * 
+ * 
+ * // ==================== FINE ====================
+ * </pre>
+ */
+class RrepSec : public ::inet::aodv::AodvControlPacket
+{
+  protected:
+    bool repairFlag = false;
+    bool ackRequiredFlag = false;
+    uint16_t reserved = 0;
+    unsigned int prefixSize = 0;
+    unsigned int hopCount = 0;
+    L3Address destAddr;
+    uint32_t destSeqNum = 0;
+    L3Address originatorAddr;
+    omnetpp::simtime_t lifeTime = SIMTIME_ZERO;
+    omnetpp::opp_string hash;
+    int length = 0;
+    omnetpp::opp_string signature;
+
+  private:
+    void copy(const RrepSec& other);
+
+  protected:
+    // protected and unimplemented operator==(), to prevent accidental usage
+    bool operator==(const RrepSec&);
+
+  public:
+    RrepSec();
+    RrepSec(const RrepSec& other);
+    virtual ~RrepSec();
+    RrepSec& operator=(const RrepSec& other);
+    virtual RrepSec *dup() const override {return new RrepSec(*this);}
+    virtual void parsimPack(omnetpp::cCommBuffer *b) const override;
+    virtual void parsimUnpack(omnetpp::cCommBuffer *b) override;
+
+    // field getter/setter methods
+    virtual bool getRepairFlag() const;
+    virtual void setRepairFlag(bool repairFlag);
+    virtual bool getAckRequiredFlag() const;
+    virtual void setAckRequiredFlag(bool ackRequiredFlag);
+    virtual uint16_t getReserved() const;
+    virtual void setReserved(uint16_t reserved);
+    virtual unsigned int getPrefixSize() const;
+    virtual void setPrefixSize(unsigned int prefixSize);
+    virtual unsigned int getHopCount() const;
+    virtual void setHopCount(unsigned int hopCount);
+    virtual const L3Address& getDestAddr() const;
+    virtual L3Address& getDestAddrForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<RrepSec*>(this)->getDestAddr());}
+    virtual void setDestAddr(const L3Address& destAddr);
+    virtual uint32_t getDestSeqNum() const;
+    virtual void setDestSeqNum(uint32_t destSeqNum);
+    virtual const L3Address& getOriginatorAddr() const;
+    virtual L3Address& getOriginatorAddrForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<RrepSec*>(this)->getOriginatorAddr());}
+    virtual void setOriginatorAddr(const L3Address& originatorAddr);
+    virtual omnetpp::simtime_t getLifeTime() const;
+    virtual void setLifeTime(omnetpp::simtime_t lifeTime);
+    virtual const char * getHash() const;
+    virtual void setHash(const char * hash);
+    virtual int getLength() const;
+    virtual void setLength(int length);
+    virtual const char * getSignature() const;
+    virtual void setSignature(const char * signature);
+};
+
+inline void doParsimPacking(omnetpp::cCommBuffer *b, const RrepSec& obj) {obj.parsimPack(b);}
+inline void doParsimUnpacking(omnetpp::cCommBuffer *b, RrepSec& obj) {obj.parsimUnpack(b);}
+
+/**
+ * Class generated from <tt>routing/aodv/AodvControlPackets.msg:171</tt> by nedtool.
  * <pre>
  * //
  * // Represents an internal timer for a Route Reply packet in Aodv module
@@ -446,7 +646,7 @@ inline void doParsimPacking(omnetpp::cCommBuffer *b, const WaitForRrep& obj) {ob
 inline void doParsimUnpacking(omnetpp::cCommBuffer *b, WaitForRrep& obj) {obj.parsimUnpack(b);}
 
 /**
- * Class generated from <tt>routing/aodv/AodvControlPackets.msg:130</tt> by nedtool.
+ * Class generated from <tt>routing/aodv/AodvControlPackets.msg:181</tt> by nedtool.
  * <pre>
  * //
  * // Represents a timer for delayed sending

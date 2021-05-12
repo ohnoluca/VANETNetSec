@@ -26,7 +26,7 @@
 #include "inet/networklayer/contract/IL3AddressType.h"
 #include "inet/networklayer/contract/INetfilter.h"
 #include "inet/networklayer/contract/IRoutingTable.h"
-#include "inet/routing/aodv/AodvControlPackets_m.h"
+#include "AodvControlPackets_m.h"
 #include "inet/routing/aodv/AodvRouteData.h"
 #include "inet/routing/base/RoutingProtocolBase.h"
 #include "inet/transportlayer/contract/udp/UdpSocket.h"
