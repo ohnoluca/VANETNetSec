@@ -617,6 +617,24 @@ const Ptr<RrepSec> SecureAodv::createRREP(const Ptr<RreqSec>& rreq, IRoute *dest
     }
 
 
+    //INSERIMENTO DEL CAMPO CHECK NEL PACCHETTO (CIFRATURA DestAddr)
+
+    std::string destAddrString = rrep->getDestAddr().str();
+    std::string message = destAddrString;
+
+    std::string messageBase64;
+    CryptoPP::StringSource ss(message, true,new CryptoPP::Base64Encoder(new CryptoPP::StringSink(messageBase64)));
+    std::string signature = sign(messageBase64);
+
+    rrep->setHash(signature.c_str());
+    rrep->setLength(len);
+    rrep->setSignature(signature.c_str());
+
+    //FINE INSERIMENTO
+
+
+
+
     return rrep;
 }
 
@@ -666,6 +684,30 @@ void SecureAodv::handleRREP(const Ptr<RrepSec>& rrep, const L3Address& sourceAdd
         handleHelloMessage(rrep);
         return;
     }
+
+    //VERIFICA CHECK DI INTEGRITA' DEL PACCHETTO
+
+    std::string destAddrString = rreq->getDestAddr().str();
+    std::string message = destAddrString;
+    std::string messageBase64;
+    CryptoPP::StringSource ss(message, true,
+    new CryptoPP::Base64Encoder(
+    new CryptoPP::StringSink(messageBase64)));
+    std::string signature = rreq->getHash();
+    bool result = verify(len, messageBase64, signature);
+
+    /////////////////////////////////////// RESULT /////////////////////////////////////
+
+    if (true == result) {
+        cout << "Message Verified" << endl;
+    } else {
+        cout << "Message Verification Failed" << endl;
+        return;
+    }
+
+    //FINE CHECK
+
+
 
 
     // When a node receives a RREP message, it searches (using longest-
@@ -914,7 +956,7 @@ void SecureAodv::handleRREQ(const Ptr<RreqSec>& rreq, const L3Address& sourceAdd
     return;
     }
 
-     //FINE CHECK
+    //FINE CHECK
 
 
     // When a node receives a RREQ, it first creates or updates a route to
