@@ -22,6 +22,7 @@
 
 package vanetnetsec.veins_inet;
 
+import vanetnetsec.routing.aodv.AodvAttackerRSA;
 import vanetnetsec.routing.aodv.SecureAodv;
 import vanetnetsec.routing.aodv.AodvBase;
 import vanetnetsec.routing.aodv.AodvAttacker;

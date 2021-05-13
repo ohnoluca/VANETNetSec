@@ -26,6 +26,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 # Object files for local .cc, .msg and .sm files
 OBJS = \
     $O/routing/aodv/AodvAttacker.o \
+    $O/routing/aodv/AodvAttackerRSA.o \
     $O/routing/aodv/AodvBase.o \
     $O/routing/aodv/SecureAodv.o \
     $O/veins_inet/VeinsInetApplicationBase.o \
