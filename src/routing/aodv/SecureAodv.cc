@@ -38,6 +38,9 @@ using namespace std;
 #include "cryptopp/rsa.h"
 #include "cryptopp/osrng.h"
 #include "cryptopp/base64.h"
+#include "cryptopp/sha.h"
+#include "cryptopp/hex.h"
+#include "cryptopp/cryptlib.h"
 #include "cryptopp/files.h"
 using namespace CryptoPP;
 
@@ -497,7 +500,7 @@ const Ptr<RreqSec> SecureAodv::createRREQ(const L3Address& destAddr)
     rreqPacket->setDestAddr(destAddr);
 
 
-    //INSERIMENTO DEL CAMPO CHECK NEL PACCHETTO (CIFRATURA DestAddr)
+    //INSERIMENTO DEL CAMPO SIGNATURE NEL PACCHETTO (CIFRATURA DestAddr)
 
     std::string destAddrString = rreqPacket->getDestAddr().str();
     std::string message = destAddrString;
@@ -506,11 +509,26 @@ const Ptr<RreqSec> SecureAodv::createRREQ(const L3Address& destAddr)
     CryptoPP::StringSource ss(message, true,new CryptoPP::Base64Encoder(new CryptoPP::StringSink(messageBase64)));
     std::string signature = sign(messageBase64);
 
-    rreqPacket->setHash(signature.c_str());
+    //rreqPacket->setHash(signature.c_str());
     rreqPacket->setLength(len);
     rreqPacket->setSignature(signature.c_str());
 
-    //FINE INSERIMENTO
+    //========================FINE INSERIMENTO SIGNATURE======================
+
+
+    // INSERIMENTO DEL CAMPO HASH NEL PACCHETTO (SHA256 DestAddr)
+
+    CryptoPP::HexEncoder encoder(new CryptoPP::FileSink(std::cout));
+
+    std::string digest;
+
+    CryptoPP::SHA256 hash;
+    hash.Update((const byte*)message.data(), message.size());
+    digest.resize(hash.DigestSize());
+    hash.Final((byte*)&digest[0]);
+
+    rreqPacket->setHash(digest.c_str());
+    //FINE INSERIMENTO HASH
 
 
     // The RREQ ID field is incremented by one from the last RREQ ID used
@@ -617,7 +635,7 @@ const Ptr<RrepSec> SecureAodv::createRREP(const Ptr<RreqSec>& rreq, IRoute *dest
     }
 
 
-    //INSERIMENTO DEL CAMPO CHECK NEL PACCHETTO (CIFRATURA DestAddr)
+    //INSERIMENTO DEL CAMPO SIGNATURE NEL PACCHETTO (CIFRATURA DestAddr)
 
     std::string destAddrString = rrep->getDestAddr().str();
     std::string message = destAddrString;
@@ -626,11 +644,27 @@ const Ptr<RrepSec> SecureAodv::createRREP(const Ptr<RreqSec>& rreq, IRoute *dest
     CryptoPP::StringSource ss(message, true,new CryptoPP::Base64Encoder(new CryptoPP::StringSink(messageBase64)));
     std::string signature = sign(messageBase64);
 
-    rrep->setHash(signature.c_str());
+    //rrep->setHash(signature.c_str());
     rrep->setLength(len);
     rrep->setSignature(signature.c_str());
 
-    //FINE INSERIMENTO
+    //========================FINE INSERIMENTO SIGNATURE========================
+
+
+    // INSERIMENTO DEL CAMPO HASH NEL PACCHETTO (SHA256 DestAddr)
+
+    CryptoPP::HexEncoder encoder(new CryptoPP::FileSink(std::cout));
+
+    std::string digest;
+
+    CryptoPP::SHA256 hash;
+    hash.Update((const byte*)message.data(), message.size());
+    digest.resize(hash.DigestSize());
+    hash.Final((byte*)&digest[0]);
+
+    rrep->setHash(digest.c_str());
+
+    //FINE INSERIMENTO HASH
 
 
 
@@ -687,13 +721,13 @@ void SecureAodv::handleRREP(const Ptr<RrepSec>& rrep, const L3Address& sourceAdd
 
     //VERIFICA CHECK DI INTEGRITA' DEL PACCHETTO
 
-    std::string destAddrString = rreq->getDestAddr().str();
+    std::string destAddrString = rrep->getDestAddr().str();
     std::string message = destAddrString;
     std::string messageBase64;
     CryptoPP::StringSource ss(message, true,
     new CryptoPP::Base64Encoder(
     new CryptoPP::StringSink(messageBase64)));
-    std::string signature = rreq->getHash();
+    std::string signature = rrep->getSignature();
     bool result = verify(len, messageBase64, signature);
 
     /////////////////////////////////////// RESULT /////////////////////////////////////
@@ -705,9 +739,22 @@ void SecureAodv::handleRREP(const Ptr<RrepSec>& rrep, const L3Address& sourceAdd
         return;
     }
 
-    //FINE CHECK
+    //==========================FINE SIGNATURE=============================
 
 
+    // VERIFICA DEL CAMPO HASH NEL PACCHETTO (SHA256 DestAddr)
+
+    SHA256 hash;
+    std::string digest = rrep ->getHash();
+    hash.Update((const byte*)message.data(), message.size());
+    bool verified = hash.Verify((const byte*)digest.data());
+
+    if (verified == true)
+        std::cout << "Verified hash over message" << std::endl;
+    else
+        std::cout << "Failed to verify hash over message" << std::endl;
+
+    //FINE INSERIMENTO HASH
 
 
     // When a node receives a RREP message, it searches (using longest-
@@ -936,7 +983,7 @@ void SecureAodv::handleRREQ(const Ptr<RreqSec>& rreq, const L3Address& sourceAdd
         return;
     }
 
-    //VERIFICA CHECK DI INTEGRITA' DEL PACCHETTO
+    //VERIFICA SIGNATURE DI INTEGRITA' DEL PACCHETTO
 
     std::string destAddrString = rreq->getDestAddr().str();
     std::string message = destAddrString;
@@ -944,11 +991,11 @@ void SecureAodv::handleRREQ(const Ptr<RreqSec>& rreq, const L3Address& sourceAdd
     CryptoPP::StringSource ss(message, true,
     new CryptoPP::Base64Encoder(
     new CryptoPP::StringSink(messageBase64)));
-    std::string signature = rreq->getHash();
+    std::string signature = rreq->getSignature();
     bool result = verify(len, messageBase64, signature);
 
-     ///////////////////////////////////////
-    // Result
+     ///////////////////////////////////////// RESULT ///////////////////////////////////////
+
     if (true == result) {
     cout << "Message Verified" << endl;
     } else {
@@ -956,7 +1003,21 @@ void SecureAodv::handleRREQ(const Ptr<RreqSec>& rreq, const L3Address& sourceAdd
     return;
     }
 
-    //FINE CHECK
+    //=======================FINE SIGNATURE=======================
+
+
+    // VERIFICA DEL CAMPO HASH NEL PACCHETTO (SHA256 DestAddr)
+    SHA256 hash;
+    std::string digest = rreq ->getHash();
+    hash.Update((const byte*)message.data(), message.size());
+    bool verified = hash.Verify((const byte*)digest.data());
+
+    if (verified == true)
+        std::cout << "Verified hash over message" << std::endl;
+    else
+        std::cout << "Failed to verify hash over message" << std::endl;
+
+    //FINE INSERIMENTO HASH
 
 
     // When a node receives a RREQ, it first creates or updates a route to
