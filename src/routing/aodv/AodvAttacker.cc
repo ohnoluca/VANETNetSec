@@ -474,7 +474,7 @@ const Ptr<Rrep> AodvAttacker::createRREP(const Ptr<Rreq>& rreq, IRoute *destRout
     // if it is an intermediate node with an fresh enough route to the destination
     // (see section 6.6.2).
 
-    if (true) {    //rreq->getDestAddr() == getSelfIPAddress()
+    if (getSelfIPAddress() == getSelfIPAddress()) {    //rreq->getDestAddr() == getSelfIPAddress()
         // node is itself the requested destination
         // 6.6.1. Route Reply Generation by the Destination
 
@@ -492,7 +492,7 @@ const Ptr<Rrep> AodvAttacker::createRREP(const Ptr<Rreq>& rreq, IRoute *destRout
 
         // and enters the value zero in the Hop Count field
         // of the RREP.
-        rrep->setHopCount(999);
+        rrep->setHopCount(999); // MODIFICA prima era 0
 
         // The destination node copies the value MY_ROUTE_TIMEOUT
         // into the Lifetime field of the RREP.

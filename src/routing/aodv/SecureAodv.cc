@@ -63,7 +63,7 @@ std::string sign(std::string message) {
     //Read private key
     CryptoPP::ByteQueue bytes;
     FileSource file(
-            "/home/veins/workspace.omnetpp/KeyGenerator/privkeyRSA1024.txt",
+            "/home/veins/workspace.omnetpp/KeyGenerator/privkeyRSA1024.txt", ///home/veins/workspace.omnetpp/KeyGenerator/privkeyRSA1024.txt
             true, new Base64Decoder);
     file.TransferTo(bytes);
     bytes.MessageEnd();
